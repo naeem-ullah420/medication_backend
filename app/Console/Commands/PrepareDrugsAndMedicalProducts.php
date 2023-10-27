@@ -2,20 +2,18 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\MedicationResponseController;
-use App\Models\BnfDetail;
-use App\Models\MedicationResponse;
-use App\Models\NafdacProduct;
+use App\Http\Controllers\DrugsAndMedicalProductController;
+use App\Models\DrugsAndMedicalProduct;
 use Illuminate\Console\Command;
 
-class PrepareMedicationTypeObject extends Command
+class PrepareDrugsAndMedicalProducts extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'prepare:medication_object';
+    protected $signature = 'command:name';
 
     /**
      * The console command description.
@@ -41,12 +39,8 @@ class PrepareMedicationTypeObject extends Command
      */
     public function handle()
     {
-        MedicationResponse::truncate();
-
-        app(MedicationResponseController::class)->start_creating_responses();
-
-        dump("======> (Done)");
-
+        DrugsAndMedicalProduct::truncate();
+        app(DrugsAndMedicalProductController::class)->start_creating_responses();
         return Command::SUCCESS;
     }
 }

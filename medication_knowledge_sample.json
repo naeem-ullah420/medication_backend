@@ -1,0 +1,28 @@
+{
+    "resourceType": "MedicationKnowledge",
+    "id": "medicationknowledge-aspirin",
+    "code": {
+      "coding": [
+        {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "198440",
+          "display": "Aspirin"
+        }
+      ],
+      "text": "Aspirin"
+    },
+    "status": "active",
+    "medicineClassification": [ //source https://www.whocc.no/atc_ddd_index/
+      {
+        "classification": {
+          "coding": [
+            {
+              "system": "http://www.whocc.no/atc",
+              "code": "N02",
+              "display": "ANALGESICS"
+            }
+          ]
+        }
+      }
+    ]
+  }

@@ -1,0 +1,86 @@
+{
+    "resourceType": "Medication",
+    "id": "medexample015", // unique random id containing name
+    "contained": [
+        {           // from nafdac website
+            "resourceType": "Organization",
+            "id": "mmanu",          // ye kuch b ho skti ha isko aagay as a reference use krna ha marketing authorizzation holder main reference krna ha
+            "name": "Medication Manufacturer"
+        }
+    ],
+    "code": {   // all codes snoomed, atc and any other codes
+        "coding": [
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "213293",
+                "type":"", // extra key for snomed, bnf, atc_code
+                "display": "Capecitabine 500mg oral tablet (Xeloda)"
+            }
+        ]
+    },
+    "marketingAuthorizationHolder": {  // from above contained.0.id
+        "reference": "#mmanu"
+    },
+    "doseForm": { // DMD browser from summary (FORM+ROUTE)
+        "coding": [
+            {
+                "display": "Tablet dose form (qualifier value)"
+            }
+        ]
+    },
+    "ingredient": [         // we'll get it from dmd website (VMP ingredients)
+        {
+            "item": {
+                "concept": {
+                    "coding": [
+                        {
+                            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                            "code": "203134",
+                            "display": "Piperacillin Sodium"
+                        }
+                    ]
+                }
+            },
+            "strengthRatio": {
+                "numerator": {
+                    "value": 4,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "g"
+                },
+                "denominator": {
+                    "value": 20,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mL"
+                }
+            }
+        },
+        {
+            "item": {
+                "concept": {
+                    "coding": [
+                        {
+                            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                            "code": "221167",
+                            "display": "Tazobactam Sodium"
+                        }
+                    ]
+                }
+            },
+            "strengthRatio": {
+                "numerator": {
+                    "value": 0.5,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "g"
+                },
+                "denominator": {
+                    "value": 20,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mL"
+                }
+            }
+        }
+    ],
+    "definition": {
+        "reference": "MedicationKnowledge/medicationknowledge-aspirin"
+    }
+}
