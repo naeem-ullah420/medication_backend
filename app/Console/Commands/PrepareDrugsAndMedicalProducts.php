@@ -13,7 +13,7 @@ class PrepareDrugsAndMedicalProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'prepare:drugs_and_medical_products';
 
     /**
      * The console command description.
