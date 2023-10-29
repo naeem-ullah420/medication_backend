@@ -13,13 +13,16 @@ use Illuminate\Http\Request;
 class DrugsAndMedicalProductController extends Controller
 {
     public function start_creating_responses() {
-
-        $dmd_vtms = DmAndDVtm::get();
+        // ssh root@54.92.83.143
+        $dmd_vtms = DmAndDVtm::query()
+        // ->where('_id', '653827914eecf5459417132e')
+        ->get();
 
         foreach($dmd_vtms as $vtm) {
             $payload = [];
             self::prepare_vtm_detail($payload, $vtm);
             self::prepare_vmps_detail($payload, $vtm);
+            // return $payload;
             DrugsAndMedicalProduct::create($payload);
         }
     }
@@ -60,8 +63,10 @@ class DrugsAndMedicalProductController extends Controller
     }
 
     public function prepare_amps_detail(&$payload, $vmp) {
-
-        $db_amps = DmAndDAmp::where('parent_products.vmp_value', data_get($vmp, 'full_name'))->get()?->toArray();
+        // drug collection
+        // {"vtm_detail.vtm_initial_detail.vtm_title":"Abatacept"}
+        // $db_amps = DmAndDAmp::where('parent_products.vmp_value', data_get($vmp, 'full_name'))->get()?->toArray();
+        $db_amps = DmAndDAmp::where('amps_detail.vmp_title', data_get($vmp, 'full_name'))->get()?->toArray();
         $amps_payload = [];
 
         foreach($db_amps as $amp) {
