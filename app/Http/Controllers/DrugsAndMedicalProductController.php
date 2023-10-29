@@ -66,7 +66,9 @@ class DrugsAndMedicalProductController extends Controller
         // drug collection
         // {"vtm_detail.vtm_initial_detail.vtm_title":"Abatacept"}
         // $db_amps = DmAndDAmp::where('parent_products.vmp_value', data_get($vmp, 'full_name'))->get()?->toArray();
-        $db_amps = DmAndDAmp::where('amps_detail.vmp_title', data_get($vmp, 'full_name'))->get()?->toArray();
+        $db_amps = DmAndDAmp::where('amps_detail.vmp_title', data_get($vmp, 'full_name'))
+        ->orWhere('parent_products.vmp_value', data_get($vmp, 'full_name'))
+        ->get()?->toArray();
         $amps_payload = [];
 
         foreach($db_amps as $amp) {
